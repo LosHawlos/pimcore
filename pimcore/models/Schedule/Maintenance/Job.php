@@ -46,7 +46,6 @@ class Job
     public $arguments;
 
     /**
-     * Job constructor.
      * @param $id
      * @param $object
      * @param $method

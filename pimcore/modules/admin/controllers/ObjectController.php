@@ -575,9 +575,6 @@ class Admin_ObjectController extends \Pimcore\Controller\Action\Admin\Element
         return true;
     }
 
-    /**
-     *
-     */
     public function lockAction()
     {
         $object = Object::getById($this->getParam("id"));

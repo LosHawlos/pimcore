@@ -323,6 +323,7 @@ class Pdf extends Model\Document\Tag
     }
 
     /**
+     * @see Document\Tag\TagInterface::setDataFromEditmode
      * @param mixed $data
      * @return $this
      */

@@ -526,6 +526,8 @@ class Cache
 
     /**
      * Write the stack to the cache
+     *
+     * @return void
      */
     public static function write()
     {
@@ -548,7 +550,7 @@ class Cache
 
 
     /**
-     * @param bool $force
+     *
      */
     public static function setWriteLock($force = false)
     {
@@ -625,6 +627,8 @@ class Cache
 
     /**
      * Empty the cache
+     *
+     * @return void
      */
     public static function clearAll()
     {
@@ -652,6 +656,7 @@ class Cache
      * Removes entries from the cache matching the given tag
      *
      * @param string $tag
+     * @return void
      */
     public static function clearTag($tag)
     {
@@ -662,6 +667,7 @@ class Cache
      * Removes entries from the cache matching the given tags
      *
      * @param array $tags
+     * @return void
      */
     public static function clearTags($tags = [])
     {
@@ -714,6 +720,7 @@ class Cache
      * Adds a tag to the shutdown queue, see clearTagsOnShutdown
      * @static
      * @param $tag
+     * @return void
      */
     public static function addClearTagOnShutdown($tag)
     {
@@ -726,6 +733,7 @@ class Cache
     /**
      * Clears all tags stored in self::$_clearTagsOnShutdown, this function is executed in \Pimcore::shutdown()
      * @static
+     * @return void
      */
     public static function clearTagsOnShutdown()
     {
@@ -750,6 +758,7 @@ class Cache
     /**
      * @static
      * @param $tag
+     * @return void
      */
     public static function addIgnoredTagOnClear($tag)
     {
@@ -761,6 +770,7 @@ class Cache
     /**
      * @static
      * @param $tag
+     * @return void
      */
     public static function removeIgnoredTagOnClear($tag)
     {
@@ -781,6 +791,7 @@ class Cache
     /**
      * Disables the complete pimcore cache
      * @static
+     * @return void
      */
     public static function disable()
     {
@@ -792,6 +803,7 @@ class Cache
 
     /**
      * @static
+     * @return void
      */
     public static function enable()
     {

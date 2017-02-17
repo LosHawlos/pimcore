@@ -32,9 +32,7 @@ class Countrymultiselect extends Model\Object\ClassDefinition\Data\Multiselect
      */
     public $restrictTo = null;
 
-    /**
-     * Countrymultiselect constructor.
-     */
+
     public function __construct()
     {
         $countries = \Zend_Locale::getTranslationList('territory');

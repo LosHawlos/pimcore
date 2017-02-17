@@ -146,84 +146,64 @@ class Unit extends Model\AbstractModel
         return ucfirst($this->getAbbreviation() . " (" . $this->getId() . ")");
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAbbreviation()
-    {
-        return $this->abbreviation;
-    }
-
-    /**
-     * @param string $abbreviation
-     */
     public function setAbbreviation($abbreviation)
     {
         $this->abbreviation = $abbreviation;
     }
 
-    /**
-     * @return string
-     */
-    public function getGroup()
+    public function getAbbreviation()
     {
-        return $this->group;
+        return $this->abbreviation;
     }
 
-    /**
-     * @param string $group
-     */
-    public function setGroup($group)
+    public function setBaseunit($baseunit)
     {
-        $this->group = $group;
+        $this->baseunit = $baseunit;
     }
 
-    /**
-     * @return string
-     */
-    public function getLongname()
-    {
-        return $this->longname;
-    }
-
-    /**
-     * @param string $longname
-     */
-    public function setLongname($longname)
-    {
-        $this->longname = $longname;
-    }
-
-    /**
-     * @return string
-     */
     public function getBaseunit()
     {
         return $this->baseunit;
     }
 
-    /**
-     * @param string $baseunit
-     */
-    public function setBaseunit($baseunit)
+    public function setFactor($factor)
     {
-        $this->baseunit = $baseunit;
+        $this->factor = $factor;
+    }
+
+    public function getFactor()
+    {
+        return $this->factor;
+    }
+
+    public function setGroup($group)
+    {
+        $this->group = $group;
+    }
+
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setLongname($longname)
+    {
+        $this->longname = $longname;
+    }
+
+    public function getLongname()
+    {
+        return $this->longname;
     }
 
     /**
@@ -240,22 +220,6 @@ class Unit extends Model\AbstractModel
     public function setReference($reference)
     {
         $this->reference = $reference;
-    }
-
-    /**
-     * @return float
-     */
-    public function getFactor()
-    {
-        return $this->factor;
-    }
-
-    /**
-     * @param float $factor
-     */
-    public function setFactor($factor)
-    {
-        $this->factor = $factor;
     }
 
     /**

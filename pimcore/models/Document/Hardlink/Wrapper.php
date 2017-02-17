@@ -33,25 +33,16 @@ trait Wrapper
     protected $sourceDocument;
 
     // OVERWRITTEN METHODS
-    /**
-     *
-     */
     public function save()
     {
         $this->raiseHardlinkError();
     }
 
-    /**
-     *
-     */
     protected function update()
     {
         $this->raiseHardlinkError();
     }
 
-    /**
-     *
-     */
     public function delete()
     {
         $this->raiseHardlinkError();

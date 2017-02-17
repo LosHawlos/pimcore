@@ -109,9 +109,6 @@ class Manager
         }
     }
 
-    /**
-     *
-     */
     private function initUserIds()
     {
         $this->userIds = array_merge([$this->user->getId()], $this->user->getRoles());

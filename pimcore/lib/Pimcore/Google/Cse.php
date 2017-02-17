@@ -44,9 +44,6 @@ class Cse implements \Zend_Paginator_Adapter_Interface, \Zend_Paginator_AdapterA
         return $list;
     }
 
-    /**
-     *
-     */
     public function load()
     {
         $client = Api::getSimpleClient();
@@ -443,9 +440,6 @@ class Cse implements \Zend_Paginator_Adapter_Interface, \Zend_Paginator_AdapterA
      * Methods for Iterator
      */
 
-    /**
-     *
-     */
     public function rewind()
     {
         reset($this->results);

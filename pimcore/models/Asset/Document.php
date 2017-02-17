@@ -32,9 +32,6 @@ class Document extends Model\Asset
      */
     public $type = "document";
 
-    /**
-     *
-     */
     protected function update()
     {
         $this->clearThumbnails();

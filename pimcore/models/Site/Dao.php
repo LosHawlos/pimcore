@@ -93,7 +93,21 @@ class Dao extends Model\Dao\AbstractDao
     }
 
     /**
+     * Save object to database
+     */
+    public function save()
+    {
+        if ($this->model->getId()) {
+            return $this->update();
+        }
+
+        return $this->create();
+    }
+
+    /**
      * Create a new record for the object in database
+     *
+     * @return boolean
      */
     public function create()
     {
@@ -104,22 +118,6 @@ class Dao extends Model\Dao\AbstractDao
         $this->model->setId($this->db->lastInsertId());
 
         $this->save();
-    }
-
-    /**
-     * Save object to database
-     *
-     * @return boolean
-     *
-     * @todo: update and create don't return anything
-     */
-    public function save()
-    {
-        if ($this->model->getId()) {
-            return $this->update();
-        }
-
-        return $this->create();
     }
 
     /**

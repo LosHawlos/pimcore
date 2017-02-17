@@ -272,9 +272,7 @@ class Printpage extends \Pimcore\Controller\Action\Admin\Document
         file_put_contents(PIMCORE_TEMPORARY_DIRECTORY . DIRECTORY_SEPARATOR . "web2print-processingoptions-" . $documentId . "_" . $this->getUser()->getId() . ".psf", \Pimcore\Tool\Serialize::serialize($options));
     }
 
-    /**
-     *
-     */
+
     public function cancelGenerationAction()
     {
         Processor::getInstance()->cancelGeneration(intval($this->getParam("id")));

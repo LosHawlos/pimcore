@@ -273,17 +273,11 @@ class CalculatedValue extends Model\Object\ClassDefinition\Data
         return null;
     }
 
-    /**
-     *
-     */
     public function save()
     {
         // nothing to do
     }
 
-    /**
-     *
-     */
     public function load()
     {
     }

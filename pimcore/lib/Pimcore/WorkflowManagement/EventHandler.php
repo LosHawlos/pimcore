@@ -156,9 +156,6 @@ class EventHandler
         \Zend_Registry::set('workflow_events_disable_cur_process', true);
     }
 
-    /**
-     *
-     */
     public static function enable()
     {
         \Zend_Registry::set('workflow_events_disable_cur_process', false);

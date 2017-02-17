@@ -255,8 +255,6 @@ abstract class Data
      * @param mixed $params
      * @param $idMapper
      * @return mixed
-     *
-     * @todo: most of the implementations don't return anything
      */
     public function getFromWebserviceImport($value, $object = null, $params = [], $idMapper = null)
     {

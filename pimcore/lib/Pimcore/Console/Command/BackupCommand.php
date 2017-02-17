@@ -22,9 +22,6 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 class BackupCommand extends AbstractCommand
 {
-    /**
-     *
-     */
     protected function configure()
     {
         $this

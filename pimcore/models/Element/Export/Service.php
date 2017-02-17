@@ -30,9 +30,6 @@ class Service
      */
     protected $webService;
 
-    /**
-     * Service constructor.
-     */
     public function __construct()
     {
         $this->webService = new Webservice\Service();
@@ -41,8 +38,6 @@ class Service
     /**
      * @param  Element\ElementInterface $element
      * @return mixed
-     *
-     * @todo: I dont know the return type here
      */
     public function getApiElement($element)
     {

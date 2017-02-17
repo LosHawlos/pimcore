@@ -22,9 +22,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CacheClearCommand extends AbstractCommand
 {
-    /**
-     *
-     */
     protected function configure()
     {
         $this

@@ -43,7 +43,6 @@ class Service
     protected $user;
 
     /**
-     * Service constructor.
      * @param $user
      */
     public function __construct($user)

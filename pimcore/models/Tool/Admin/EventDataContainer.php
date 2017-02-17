@@ -24,7 +24,6 @@ class EventDataContainer
     protected $data;
 
     /**
-     * EventDataContainer constructor.
      * @param $data
      */
     public function __construct($data)

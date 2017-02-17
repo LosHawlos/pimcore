@@ -25,6 +25,13 @@ class Dao extends Document\PageSnippet\Dao
 {
 
     /**
+     * Contains the valid database columns
+     *
+     * @var array
+     */
+    protected $validColumnsPage = [];
+
+    /**
      * Get the valid columns from the database
      */
     public function init()
@@ -32,13 +39,6 @@ class Dao extends Document\PageSnippet\Dao
         // page
         $this->validColumnsPage = $this->getValidTableColumns("documents_printpage");
     }
-
-    /**
-     * Contains the valid database columns
-     *
-     * @var array
-     */
-    protected $validColumnsPage = [];
 
     /**
      * Get the data for the object by the given id, or by the id which is set in the object

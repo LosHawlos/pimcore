@@ -745,7 +745,6 @@ class Image extends Model\Document\Tag
      *  "asset" => array(...)
      * )
      * @param array $idMapping
-     * @return void
      */
     public function rewriteIds($idMapping)
     {

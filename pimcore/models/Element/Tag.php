@@ -291,9 +291,7 @@ class Tag extends Model\AbstractModel
         return count($this->getChildren()) > 0;
     }
 
-    /**
-     *
-     */
+
     public function correctPath()
     {
         //set id path to correct value

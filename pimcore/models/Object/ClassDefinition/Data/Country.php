@@ -34,17 +34,11 @@ class Country extends Model\Object\ClassDefinition\Data\Select
     public $restrictTo = null;
 
 
-    /**
-     * Country constructor.
-     */
     public function __construct()
     {
         $this->buildOptions();
     }
 
-    /**
-     *
-     */
     private function buildOptions()
     {
         $countries = \Zend_Locale::getTranslationList('territory');
