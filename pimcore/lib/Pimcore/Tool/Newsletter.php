@@ -58,6 +58,7 @@ class Newsletter
         }
 
         $contentHTML = $mail->getBodyHtmlRendered();
+        $contentHTML = $mail->embedImages($contentHTML, $mail);
         $contentText = $mail->getBodyTextRendered();
 
         // render the document and rewrite the links (if analytics is enabled)
@@ -94,7 +95,11 @@ class Newsletter
         }
 
         $mail->setBodyHtml($contentHTML);
-        $mail->setBodyText($contentText);
+
+        if (strlen($contentText))
+        {
+                $mail->setBodyText($contentText);
+        }
         $mail->setSubject($mail->getSubjectRendered());
 
         return $mail;

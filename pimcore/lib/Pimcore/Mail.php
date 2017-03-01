@@ -975,4 +975,63 @@ class Mail extends \Zend_Mail
 
         return $this;
     }
+
+    /**
+     * @param string $content
+     * @param $mail
+     * @return string
+     * @throws \Exception
+     */
+    public function embedImages( $bodyHtmlRendered)
+    {
+        $this->setType(\Zend_Mime::MULTIPART_RELATED);
+
+        $matches = array();
+        preg_match_all('~<img[^>]+data-embedded="true"[^>]+src\s*=\s*(\'|")(\w++://.*?)\\1~is', $bodyHtmlRendered, $matches);
+
+        foreach (array_unique($matches[2]) as $filename) {
+            $data = @file_get_contents($filename);
+            if($data === false)
+            {
+                \Pimcore\Logger::warn("Mail.embedImages: src [{$filename}] could not be fetched");
+                continue;
+            }
+            $at = $this->createAttachment($data);
+            $at->type = $this->mimeByExtension($filename);
+            $at->disposition = \Zend_Mime::DISPOSITION_INLINE;
+            $at->encoding = \Zend_Mime::ENCODING_BASE64;
+            $at->id = 'image.' . md5($filename);
+            $str = preg_quote($filename);
+            $bodyHtmlRendered = preg_replace("~('|\")$str('|\")~", '"cid:' . $at->id . '"', $bodyHtmlRendered);
+        }
+        return $bodyHtmlRendered;
+    }
+
+    /**
+     * @param string $filename
+     * @return string
+     */
+    public function mimeByExtension($filename)
+    {
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        switch ($extension)
+        {
+            case 'gif':
+                $type = 'image/gif';
+                break;
+            case 'jpg':
+            case 'jpeg':
+                $type = 'image/jpg';
+                break;
+            case 'png':
+                $type = 'image/png';
+                break;
+            default:
+                $type = 'application/octet-stream';
+        }
+        return $type;
+  }
+
+
+
 }
