@@ -262,4 +262,24 @@ class Mime
         // return default mime-type if we're unable to detect it
         return "application/octet-stream";
     }
+
+    /**
+     * @param $uri
+     * @return mixed|string
+     * @throws \Exception
+     */
+    public static function detectFromUri($uri)
+    {
+        $extension = pathinfo(parse_url($uri,PHP_URL_PATH), PATHINFO_EXTENSION);
+        if ($extension && array_key_exists($extension, self::$extensionMapping))
+        {
+            // This currently only works when the extension is part of the path
+            return self::$extensionMapping[$extension];
+        }
+        // TODO: as a fallback fetch the http headers
+        
+        // return default mime-type if we're unable to detect it
+        return "application/octet-stream";
+    }
+
 }

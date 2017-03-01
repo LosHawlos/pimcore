@@ -17,6 +17,7 @@ namespace Pimcore\Tool;
 use Pimcore\Document\Newsletter\SendingParamContainer;
 use Pimcore\Mail;
 use Pimcore\Tool;
+use Pimcore\Helper\Mail as MailHelper;
 use Pimcore\Model\Object;
 use Pimcore\Model\Document;
 use Pimcore\Model;
@@ -58,7 +59,7 @@ class Newsletter
         }
 
         $contentHTML = $mail->getBodyHtmlRendered();
-        $contentHTML = $mail->embedImages($contentHTML, $mail);
+        $contentHTML = MailHelper::embedImages($contentHTML, $mail);
         $contentText = $mail->getBodyTextRendered();
 
         // render the document and rewrite the links (if analytics is enabled)
@@ -98,7 +99,8 @@ class Newsletter
 
         if (strlen($contentText))
         {
-                $mail->setBodyText($contentText);
+            // only add text part when a text is rendered
+            $mail->setBodyText($contentText);
         }
         $mail->setSubject($mail->getSubjectRendered());
 

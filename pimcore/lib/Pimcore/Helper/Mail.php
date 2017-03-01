@@ -16,6 +16,7 @@ namespace Pimcore\Helper;
 
 use Pimcore\Mail as MailClient;
 use Pimcore\Tool;
+use Pimcore\Tool\Mime as MimeTool;
 use Pimcore\Model;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
@@ -400,4 +401,40 @@ CSS;
 
         return $fileInfo;
     }
+
+
+    /**
+     * @param string $content
+     * @param MailClient $mail
+     * @return string
+     * @throws \Exception
+     */
+    public static function embedImages( $content, MailClient $mail)
+    {
+        $mail->setType(\Zend_Mime::MULTIPART_RELATED);
+
+        $matches = array();
+        preg_match_all('~<img[^>]+data-embedded="true"[^>]+src\s*=\s*(\'|")(\w++://.*?)\\1~is', $content, $matches);
+
+        foreach (array_unique($matches[2]) as $imageUri)
+        {
+            $data = @file_get_contents($imageUri);
+            if($data === false)
+            {
+                \Pimcore\Logger::warn("Image [{$imageUri}] could not be fetched");
+                continue;
+            }
+            $at = $mail->createAttachment($data);
+            //$at->type = $this->mimeByExtension($imageUri);
+            $at->type = MimeTool::detectFromUri($imageUri);
+            $at->disposition = \Zend_Mime::DISPOSITION_INLINE;
+            $at->encoding = \Zend_Mime::ENCODING_BASE64;
+            $at->id = 'image.' . md5($imageUri);
+            $str = preg_quote($imageUri);
+            \Pimcore\Logger::debug("Embedding image [{$imageUri}] with type [{$at->type}]");
+            $content = preg_replace("~('|\")$str('|\")~", '"cid:' . $at->id . '"', $content);
+        }
+        return $content;
+    }
+
 }
